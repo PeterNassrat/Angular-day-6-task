@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="d-flex justify-content-center">
+        <input type="text" class="form-control mt-2 w-50" placeholder="Search for a product" [(ngModel)]="searchWord" (input)="onInput()">
+    </div>
+    @for(product of products; track product.id) {
+    <div class="col-sm-6 col-md-4 my-2">
+        <div class="card" appCardShadow>
+            <div class="d-flex justify-content-center border border-2 rounded">
+                <img style="height: 150px;" class="" [src]="product.images[0]" alt="">
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text m-0">Price: {{product.price | currency }}</p>
+                <p class="card-text m-0">Quantity: {{product.stock}}</p>
+                <div>
+                    @switch (product.stock) {
+                    @case (0) {
+                    <span class="card-text text-danger">Out of stock</span>
+                    }
+                    @case (1) {
+                    <span class="card-text text-warning">Last one item</span>
+                    }
+                    @case (2) {
+                    <span class="card-text text-warning">Last two items</span>
+                    }
+                    @default {
+                    <span class="card-text text-primary">In stock</span>
+                    }
+                    }
+                </div>
+                <div class="mt-3">
+                    <button type="button" class="btn btn-primary"
+                        (click)="addToCart(product)" [disabled]="product.stock == 0">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>

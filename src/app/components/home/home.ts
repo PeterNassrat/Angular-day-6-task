@@ -8,5 +8,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home.css'
 })
 export class Home {
+  userName: string | null = null;
 
+  ngOnInit() {
+    console.log(localStorage.getItem('username'));
+    this.userName = localStorage.getItem('username');
+  }
 }

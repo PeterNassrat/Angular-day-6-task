@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light rounded" style="background-color: lightseagreen">
+  <div class="container-fluid">
+    <a class="navbar-brand p-1 rounded" routerLink="/home" routerLinkActive="active">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">About Us</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact Us</a>
+        </li> -->
+        <li class="nav-item dropdown mt-2 mt-md-0">
+          <a class="nav-link p-1 rounded" routerLink="/products" routerLinkActive="active">Products</a>
+        </li>
+      </ul>
+      <div class="d-flex justify-content-end">
+        @if(loginService.isLoggedIn()) {
+          <button class="btn btn-secondary me" [routerLink]="['/login']" (click)="logout()">Logout</button>  
+        }
+        @else {
+          <button class="btn btn-light me-2" [routerLink]="['/login']">Login</button>
+          <button class="btn btn-light" [routerLink]="['/register']">Rigster</button>
+        }
+      </div>
+    </div>
+  </div>
+</nav>

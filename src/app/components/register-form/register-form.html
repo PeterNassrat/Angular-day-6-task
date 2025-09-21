@@ -1,5 +1,5 @@
 <div style="height: 600px;" class="container d-flex justify-content-center align-items-center">
-    @if(registered) {
+    <!-- @if(registered) {
     <div style="width: 400px; height: 500px;" class="d-flex justify-content-center align-items-center bg-light rounded">
         <div class="container">
             <div class="d-flex justify-content-center">
@@ -14,8 +14,8 @@
             </div>
         </div>
     </div>
-    } @else {
-    <form style="width: 400px; height: 500px;" class="bg-light rounded" [formGroup]="registrationForm">
+    } @else { -->
+    <form style="width: 400px; height: 500px;" class="bg-light rounded shadow" [formGroup]="registrationForm">
         <div class="text-center">
             <h5 class="mt-2">Registration Form</h5>
             <hr>
@@ -102,9 +102,9 @@
 
         <div class="d-flex justify-content-center mb-2 mx-3">
             <button class="btn btn-primary me-2" [disabled]="registrationForm.invalid"
-                (click)="onSubmit()">Register</button>
+                (click)="onSubmit()" [routerLink]="['/login']">Register</button>
             <button class="btn btn-secondary" (click)="clearForm()">Clear Form</button>
         </div>
     </form>
-    }
+    <!-- } -->
 </div>

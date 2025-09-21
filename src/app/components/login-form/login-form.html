@@ -1,5 +1,5 @@
 <div style="height: 600px;" class="container d-flex justify-content-center align-items-center">
-    @if(loggedIn) {
+    <!-- @if(loggedIn) {
     <div style="width: 400px; height: 300px;" class="d-flex justify-content-center align-items-center bg-light rounded">
         <div class="container">
             <div class="d-flex justify-content-center">
@@ -12,23 +12,25 @@
             </div>
         </div>
     </div>
-    } @else {
-    <form style="width: 400px; height: 300px;" class="bg-light rounded" [formGroup]="loginForm">
+    } @else { -->
+    <form style="width: 400px; height: 300px;" class="bg-light rounded shadow" [formGroup]="loginForm">
         <div class="text-center">
             <h5 class="mt-2">Login Form</h5>
             <hr>
         </div>
 
         <div class="mb-2 mx-3">
-            <input type="text" class="form-control" placeholder="Email" formControlName="email"
+            <input type="text" class="form-control" placeholder="User Name" formControlName="userName"
             [class.is-invalid]="
-                loginForm.get('email')?.invalid &&
-                loginForm.get('email')?.touched
+                loginForm.get('userName')?.invalid &&
+                loginForm.get('userName')?.touched
             " [class.is-valid]="
-                loginForm.get('email')?.valid &&
-                loginForm.get('email')?.touched
-            ">
-            @if(loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+                loginForm.get('userName')?.valid &&
+                loginForm.get('userName')?.touched
+            "
+            [(ngModel)]="defaultUserName"
+            >
+            @if(loginForm.get('userName')?.invalid && loginForm.get('userName')?.touched) {
             <div class="invalid-feedback">
                 Email is required and should be valid
             </div>
@@ -43,11 +45,19 @@
             " [class.is-valid]="
                 loginForm.get('password')?.valid &&
                 loginForm.get('password')?.touched
-            ">
+            "
+            [(ngModel)]="defaultPassword"
+            >
             @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
             <div class="invalid-feedback">
                 Password is required and should be at least 6 characters
             </div>
+            }
+        </div>
+
+        <div class="mb-2 mx-3">
+            @if (errorMsg) {
+                <p class="text-danger">{{errorMsg}}</p>
             }
         </div>
 
@@ -57,5 +67,5 @@
             <button class="btn btn-secondary" (click)="clearForm()">Clear Form</button>
         </div>
     </form>
-    }
+    <!-- } -->
 </div>
